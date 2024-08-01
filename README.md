@@ -37,7 +37,7 @@ post.errors.full_messages # => ["Title can't be blank"]
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "dynamic_fields"
+gem "persisted_attributes"
 ```
 
 And then execute:
@@ -47,15 +47,15 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install dynamic_fields
+$ gem install persisted_attributes
 ```
 
 ## Usage
 
-Persisted attributes are backed by the `dynamic_fields_attributes` table. After installing the gem run migrations to add the required tables:
+Persisted attributes are backed by the `persisted_attributes_attributes` table. After installing the gem run migrations to add the required tables:
 
 ```
-rails db:migrate
+rails persisted_attributes:install:migrations
 ```
 
 Once the migrations are done, start adding attributes to model by including the `PersistedAttributes::ActiveRecord` module any active record model:
@@ -66,7 +66,7 @@ class Post
 end
 ```
 
-And voilà! Your model is ready to declare new dynamic fields. The API is simple:
+And voilà! Your model is ready to declare new persisted attributes. The API is as simple as:
 
 ```ruby
 class Post

@@ -1,3 +1,5 @@
+[![Tests](https://github.com/virolea/persisted_attributes/actions/workflows/tests.yml/badge.svg)](https://github.com/virolea/persisted_attributes/actions/workflows/tests.yml)
+
 # PersistedAttributes
 
 PersistedAttributes allows to add persisted attributes to ActiveRecord models without the need for a migration.

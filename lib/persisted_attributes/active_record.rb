@@ -13,8 +13,8 @@ module PersistedAttributes
         has_one :"#{field_name}_attribute", -> { where(name: field_name) }, class_name: PersistedAttributes::Attribute.attribute_class_for_attribute_type(field_type), as: :record, inverse_of: :record, dependent: :destroy
 
         define_method(field_name) do
-          if peresisted_attribute_changes["#{field_name}"]
-            peresisted_attribute_changes["#{field_name}"].value
+          if persisted_attribute_changes["#{field_name}"]
+            persisted_attribute_changes["#{field_name}"].value
           else
             dynamic_fields_attributes.find { |attribute| attribute.name == field_name.to_s }&.value
           end
@@ -22,24 +22,24 @@ module PersistedAttributes
 
         define_method("#{field_name}=") do |value|
           # Not checking for `value.blank?` here to account for boolean fields, as false.blank? is true
-          peresisted_attribute_changes["#{field_name}"] = if value == "" || value.nil?
+          persisted_attribute_changes["#{field_name}"] = if value == "" || value.nil?
             PersistedAttributes::Changes::Delete.new(field_name, self)
           else
             PersistedAttributes::Changes::CreateOrUpdate.new(value, field_name, field_type, self)
           end
         end
 
-        after_save { peresisted_attribute_changes[field_name.to_s]&.save }
+        after_save { persisted_attribute_changes[field_name.to_s]&.save }
       end
 
     end
 
-    def peresisted_attribute_changes
-      @peresisted_attribute_changes ||= {}
+    def persisted_attribute_changes
+      @persisted_attribute_changes ||= {}
     end
 
     def reload(*)
-      super.tap { @peresisted_attribute_changes = nil }
+      super.tap { @persisted_attribute_changes = nil }
     end
   end
 end

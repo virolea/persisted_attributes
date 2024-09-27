@@ -3,8 +3,8 @@ require_relative "lib/persisted_attributes/version"
 Gem::Specification.new do |spec|
   spec.name        = "persisted_attributes"
   spec.version     = PersistedAttributes::VERSION
-  spec.authors     = ["Vincent Rolea"]
-  spec.email       = ["3525369+virolea@users.noreply.github.com"]
+  spec.authors     = [ "Vincent Rolea" ]
+  spec.email       = [ "3525369+virolea@users.noreply.github.com" ]
   spec.homepage    = "https://github.com/virolea/dynamic_fields"
   spec.summary     = "Add persisted fields to active record models without migrations."
   spec.description = "Add persisted fields to active record models without migrations."
@@ -18,5 +18,7 @@ Gem::Specification.new do |spec|
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 7.1.3.4"
+  spec.add_dependency "rails", ">= 6.1.0"
+
+  spec.add_development_dependency "appraisal"
 end

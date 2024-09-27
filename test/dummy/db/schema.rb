@@ -19,12 +19,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_132741) do
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id"], name: "index_persisted_attributes_attributes_on_record"
+    t.index [ "record_type", "record_id" ], name: "index_persisted_attributes_attributes_on_record"
   end
 
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 end

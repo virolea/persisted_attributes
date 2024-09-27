@@ -31,7 +31,6 @@ module PersistedAttributes
 
         after_save { persisted_attribute_changes[field_name.to_s]&.save }
       end
-
     end
 
     def persisted_attribute_changes
